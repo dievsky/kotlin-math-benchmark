@@ -1,5 +1,9 @@
 package org.sample
 
+import kscience.kmath.operations.invoke
+import kscience.kmath.structures.NDField
+import kscience.kmath.structures.RealNDElement
+import kscience.kmath.structures.RealNDField
 import org.jetbrains.bio.viktor.F64Array
 import org.jetbrains.bio.viktor.asF64Array
 import org.jetbrains.kotlinx.multik.api.Multik
@@ -9,10 +13,6 @@ import org.jetbrains.kotlinx.multik.ndarray.data.Ndarray
 import org.jetbrains.kotlinx.multik.ndarray.operations.times
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
-import scientifik.kmath.operations.RealField
-import scientifik.kmath.structures.BufferedNDFieldElement
-import scientifik.kmath.structures.NDField
-import scientifik.kmath.structures.RealNDField
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
@@ -30,8 +30,8 @@ open class MultiplicationBenchmark {
     lateinit var multikArray1: Ndarray<Double, D1>
     lateinit var multikArray2: Ndarray<Double, D1>
     lateinit var field: RealNDField
-    lateinit var kmathArray1: BufferedNDFieldElement<Double, RealField>
-    lateinit var kmathArray2: BufferedNDFieldElement<Double, RealField>
+    lateinit var kmathArray1: RealNDElement
+    lateinit var kmathArray2: RealNDElement
     lateinit var viktorArray1: F64Array
     lateinit var viktorArray2: F64Array
 
@@ -42,8 +42,8 @@ open class MultiplicationBenchmark {
         multikArray1 = Multik.ndarray(src1)
         multikArray2 = Multik.ndarray(src2)
         field = NDField.real(arraySize)
-        kmathArray1 = field.produce { a -> src1[a[0]] }
-        kmathArray2 = field.produce { a -> src2[a[0]] }
+        kmathArray1 = field.produce { (a) -> src1[a] }
+        kmathArray2 = field.produce { (a) -> src2[a] }
         viktorArray1 = src1.asF64Array()
         viktorArray2 = src2.asF64Array()
     }
@@ -55,7 +55,7 @@ open class MultiplicationBenchmark {
 
     @Benchmark
     fun kmath(bh: Blackhole) {
-        bh.consume(field.multiply(kmathArray1, kmathArray2))
+        bh.consume(field{ kmathArray1 * kmathArray2 })
     }
 
     @Benchmark
