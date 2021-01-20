@@ -66,12 +66,12 @@
         <dependency>
             <groupId>org.jetbrains.kotlinx.multik</groupId>
             <artifactId>multik-api</artifactId>
-            <version>0.0.1-dev-11</version>
+            <version>0.0.1-dev-12</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlinx.multik</groupId>
             <artifactId>multik-default</artifactId>
-            <version>0.0.1-dev-11</version>
+            <version>0.0.1-dev-12</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -81,7 +81,7 @@
         <dependency>
             <groupId>kscience.kmath</groupId>
             <artifactId>kmath-core-jvm</artifactId>
-            <version>0.1.4</version>
+            <version>0.2.0-dev-2</version>
         </dependency>
     </dependencies>
 
@@ -96,7 +96,7 @@
         <!--
             Java source/target to use for compilation.
           -->
-        <javac.target>1.8</javac.target>
+        <javac.target>11</javac.target>
 
         <!--
            Put an approriate Kotlin compiler and stdlib version here.
@@ -141,6 +141,7 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
+                            <jvmTarget>${javac.target}</jvmTarget>
                             <sourceDirs>
                                 <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
                             </sourceDirs>
