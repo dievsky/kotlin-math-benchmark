@@ -76,7 +76,7 @@
         <dependency>
             <groupId>kscience.kmath</groupId>
             <artifactId>kmath-core-jvm</artifactId>
-            <version>0.2.0-dev-5</version>
+            <version>0.1.4</version>
         </dependency>
     </dependencies>
 
