@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.sample</groupId>
     <artifactId>kotlin-math-libraries</artifactId>
@@ -6,6 +7,30 @@
     <packaging>jar</packaging>
 
     <name>JMH benchmark sample: Kotlin</name>
+
+    <repositories>
+        <repository>
+
+            <id>bintray-mipt-npm-scientifik</id>
+            <name>bintray</name>
+            <url>https://dl.bintray.com/mipt-npm/scientifik</url>
+        </repository>
+        <repository>
+            <id>bintray-mipt-npm-dev</id>
+            <name>bintray</name>
+            <url>https://dl.bintray.com/mipt-npm/dev</url>
+        </repository>
+        <repository>
+            <id>bintray-kotlin-kotlin-datascience</id>
+            <name>bintray</name>
+            <url>https://kotlin.bintray.com/kotlin-datascience</url>
+        </repository>
+        <repository>
+            <id>bintray-jetbrains-research-maven</id>
+            <name>bintray</name>
+            <url>https://dl.bintray.com/jetbrains-research/maven</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -224,10 +249,12 @@
                         <configuration>
                             <finalName>${uberjar.name}</finalName>
                             <transformers>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.openjdk.jmh.Main</mainClass>
                                 </transformer>
-                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                             <filters>
                                 <filter>
