@@ -14,6 +14,8 @@ import scientifik.kmath.structures.BufferedNDFieldElement
 import scientifik.kmath.structures.NDField
 import scientifik.kmath.structures.RealNDField
 import java.util.concurrent.TimeUnit
+import kotlin.math.exp
+import kotlin.math.ln
 import kotlin.random.Random
 
 @Warmup(iterations = 5, time = 10, timeUnit = TimeUnit.SECONDS)
@@ -58,8 +60,13 @@ open class LogBenchmark {
     }
 
     @Benchmark
-    fun loop(bh: Blackhole) {
+    fun fastMath(bh: Blackhole) {
         bh.consume(DoubleArray(arraySize) { FastMath.log(src[it]) })
+    }
+
+    @Benchmark
+    fun math(bh: Blackhole) {
+        bh.consume(DoubleArray(arraySize) { ln(src[it]) })
     }
 
     companion object {
