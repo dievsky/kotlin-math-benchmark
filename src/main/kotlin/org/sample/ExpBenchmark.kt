@@ -13,6 +13,7 @@ import org.jetbrains.kotlinx.multik.ndarray.data.Ndarray
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
 import java.util.concurrent.TimeUnit
+import kotlin.math.exp
 import kotlin.random.Random
 
 @Warmup(iterations = 5, time = 10, timeUnit = TimeUnit.SECONDS)
@@ -53,8 +54,13 @@ open class ExpBenchmark {
     fun viktor(bh: Blackhole) = bh.consume(viktorArray.exp())
 
     @Benchmark
-    fun loop(bh: Blackhole) {
+    fun fastMath(bh: Blackhole) {
         bh.consume(DoubleArray(arraySize) { FastMath.exp(src[it]) })
+    }
+
+    @Benchmark
+    fun math(bh: Blackhole) {
+        bh.consume(DoubleArray(arraySize) { exp(src[it]) })
     }
 
     companion object {

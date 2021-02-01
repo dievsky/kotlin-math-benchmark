@@ -1,8 +1,5 @@
 package org.sample
 
-import kscience.kmath.structures.NDField
-import kscience.kmath.structures.RealNDElement
-import kscience.kmath.structures.RealNDField
 import org.apache.commons.math3.util.FastMath
 import org.jetbrains.bio.viktor.F64Array
 import org.jetbrains.bio.viktor.asF64Array
@@ -13,6 +10,7 @@ import org.jetbrains.kotlinx.multik.ndarray.data.Ndarray
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
 import java.util.concurrent.TimeUnit
+import kotlin.math.exp
 import kotlin.math.ln
 import kotlin.random.Random
 
@@ -20,55 +18,48 @@ import kotlin.random.Random
 @Measurement(iterations = 10, time = 10, timeUnit = TimeUnit.SECONDS)
 @Fork(2)
 @State(Scope.Benchmark)
-open class LogBenchmark {
+open class LogSumExpBenchmark {
 
     @Param("100", "1000", "10000", "100000", "1000000", "10000000")
     var arraySize: Int = 0
 
     var src: DoubleArray = DoubleArray(0)
     lateinit var multikArray: Ndarray<Double, D1>
-    lateinit var field: RealNDField
-    lateinit var kmathArray: RealNDElement
     lateinit var viktorArray: F64Array
-    lateinit var kotlinArray: DoubleArray
 
     @Setup
     fun setup() {
         src = DoubleArray(arraySize) { RANDOM.nextDouble() }
         multikArray = Multik.ndarray(src)
-        field = NDField.real(arraySize)
-        kmathArray = field.produce { a -> src[a[0]] }
         viktorArray = src.asF64Array()
-        kotlinArray = DoubleArray(src.size)
     }
 
     @Benchmark
     fun multik(bh: Blackhole) {
-        bh.consume(Multik.math.log(multikArray))
-    }
-
-    @Benchmark
-    fun kmath(bh: Blackhole) {
-        bh.consume(field.ln(kmathArray))
+        bh.consume(ln(Multik.math.sum(Multik.math.exp(multikArray))))
     }
 
     @Benchmark
     fun viktor(bh: Blackhole) {
-        bh.consume(viktorArray.log())
-    }
-
-    @Benchmark
-    fun fastMath(bh: Blackhole) {
-        bh.consume(DoubleArray(arraySize) { FastMath.log(src[it]) })
+        bh.consume(viktorArray.logSumExp())
     }
 
     @Benchmark
     fun math(bh: Blackhole) {
-        bh.consume(DoubleArray(arraySize) { ln(src[it]) })
+        var res = 0.0
+        src.forEach { res += exp(it) }
+        bh.consume(ln(res))
+    }
+
+    @Benchmark
+    fun fastMath(bh: Blackhole) {
+        var res = 0.0
+        src.forEach { res += FastMath.exp(it) }
+        bh.consume(FastMath.log(res))
     }
 
     companion object {
         val RANDOM = Random(42)
     }
-
 }
+

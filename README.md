@@ -5,7 +5,7 @@ for Kotlin.
 
 ## Libraries
 
-[kmath](https://github.com/mipt-npm/kmath), version 0.1.4
+[kmath](https://github.com/mipt-npm/kmath), version 0.2.0-dev-5
 
 [multik](https://github.com/Kotlin/multik), version 0.0.1-dev-11
 
