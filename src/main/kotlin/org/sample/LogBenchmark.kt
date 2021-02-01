@@ -14,7 +14,6 @@ import scientifik.kmath.structures.BufferedNDFieldElement
 import scientifik.kmath.structures.NDField
 import scientifik.kmath.structures.RealNDField
 import java.util.concurrent.TimeUnit
-import kotlin.math.exp
 import kotlin.math.ln
 import kotlin.random.Random
 

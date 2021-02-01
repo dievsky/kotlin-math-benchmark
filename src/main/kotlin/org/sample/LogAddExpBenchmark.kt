@@ -8,7 +8,6 @@ import org.jetbrains.kotlinx.multik.api.ndarray
 import org.jetbrains.kotlinx.multik.ndarray.data.D1
 import org.jetbrains.kotlinx.multik.ndarray.data.Ndarray
 import org.jetbrains.kotlinx.multik.ndarray.operations.plus
-import org.jetbrains.kotlinx.multik.ndarray.operations.times
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
 import scientifik.kmath.operations.RealField

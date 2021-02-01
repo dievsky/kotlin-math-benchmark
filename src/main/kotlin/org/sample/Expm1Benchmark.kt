@@ -3,16 +3,8 @@ package org.sample
 import org.apache.commons.math3.util.FastMath
 import org.jetbrains.bio.viktor.F64Array
 import org.jetbrains.bio.viktor.asF64Array
-import org.jetbrains.kotlinx.multik.api.Multik
-import org.jetbrains.kotlinx.multik.api.ndarray
-import org.jetbrains.kotlinx.multik.ndarray.data.D1
-import org.jetbrains.kotlinx.multik.ndarray.data.Ndarray
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
-import scientifik.kmath.operations.RealField
-import scientifik.kmath.structures.BufferedNDFieldElement
-import scientifik.kmath.structures.NDField
-import scientifik.kmath.structures.RealNDField
 import java.util.concurrent.TimeUnit
 import kotlin.math.expm1
 import kotlin.random.Random
