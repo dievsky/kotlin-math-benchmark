@@ -66,7 +66,7 @@
         <dependency>
             <groupId>org.jetbrains.kotlinx.multik</groupId>
             <artifactId>multik-default</artifactId>
-            <version>0.0.1-dev-12</version>
+            <version>0.0.1-dev-13</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -91,6 +91,7 @@
         <!--
             Java source/target to use for compilation.
           -->
+        <!--<javac.source>1.8</javac.source>-->
         <javac.target>1.8</javac.target>
 
         <!--
@@ -99,6 +100,7 @@
                 http://kotlinlang.org/docs/reference/using-maven.html#plugin-and-versions
          -->
         <kotlin.version>1.4.21</kotlin.version>
+        <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
 
         <!--
             Select a JMH benchmark generator to use. Available options:
