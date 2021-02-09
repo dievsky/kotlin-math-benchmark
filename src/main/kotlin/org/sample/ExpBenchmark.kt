@@ -16,11 +16,11 @@ open class ExpBenchmark {
     @Param("100", "1000", "10000", "100000", "1000000", "10000000")
     var arraySize: Int = 0
 
-    lateinit var s: MathStructures
+    lateinit var s: MathArrayStructures
 
     @Setup
     fun setup() {
-        s = MathStructures(arraySize)
+        s = MathArrayStructures(arraySize)
     }
 
     @Benchmark

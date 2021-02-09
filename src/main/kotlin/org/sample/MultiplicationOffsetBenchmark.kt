@@ -14,7 +14,7 @@ open class MultiplicationOffsetBenchmark {
     @Param("100", "1000", "10000", "100000", "1000000", "10000000")
     var arraySize: Int = 0
 
-    lateinit var s: MathStructures
+    lateinit var s: MathArrayStructures
     lateinit var viktor2DArray1: F64Array
     lateinit var viktor2DArray2: F64Array
 
@@ -22,7 +22,7 @@ open class MultiplicationOffsetBenchmark {
 
     @Setup
     fun setup() {
-        s = MathStructures(HUGE_ARRAY_SIZE)
+        s = MathArrayStructures(HUGE_ARRAY_SIZE)
         viktor2DArray1 = s.viktorArray1.reshape(HUGE_ARRAY_SIZE / arraySize, arraySize)
         viktor2DArray2 = s.viktorArray2.reshape(HUGE_ARRAY_SIZE / arraySize, arraySize)
     }
