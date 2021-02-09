@@ -5,19 +5,19 @@ for Kotlin.
 
 ## Libraries
 
-[kmath](https://github.com/mipt-npm/kmath), version 0.2.0-dev-5
+[kmath](https://github.com/mipt-npm/kmath)
 
-[multik](https://github.com/Kotlin/multik), version 0.0.1-dev-11
+[multik](https://github.com/Kotlin/multik)
 
-[viktor](https://github.com/JetBrains-Research/viktor), version 1.0.2
+[viktor](https://github.com/JetBrains-Research/viktor)
 
 ## Benchmarks
 
 We test the performance of the following operations:
-* elementwise addition and multiplication of two double arrays
+* elementwise addition and multiplication of two double arrays, both with and without an offset
 * dot product (aka scalar product) of two double arrays
 * sum of all elements of a double array
-* elementwise exponent and logarithm of a double array
+* elementwise exponent, logarithm, `expm1` and `log1p` of a double array
 
 We also test the performance of the "naive" Kotlin implementations of these operations.
 
