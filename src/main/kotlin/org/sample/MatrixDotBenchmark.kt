@@ -2,7 +2,7 @@ package org.sample
 
 import org.jetbrains.bio.viktor.F64Array
 import org.jetbrains.bio.viktor._I
-import org.jetbrains.kotlinx.multik.default.DefaultLinAlg
+import org.jetbrains.kotlinx.multik.api.Multik
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
 import java.util.concurrent.TimeUnit
@@ -28,7 +28,7 @@ open class MatrixDotBenchmark {
 
     @Benchmark
     fun multik(bh: Blackhole) {
-        bh.consume(DefaultLinAlg.dot(s.multikMatrix1, s.multikMatrix2T))
+        bh.consume(Multik.linalg.dot(s.multikMatrix1, s.multikMatrix2T))
     }
 
     @Benchmark
