@@ -4,6 +4,9 @@ import org.jetbrains.bio.viktor.asF64Array
 import org.jetbrains.bio.viktor.toF64Array
 import org.jetbrains.kotlinx.multik.api.Multik
 import org.jetbrains.kotlinx.multik.api.ndarray
+import scientifik.kmath.linear.real
+import scientifik.kmath.linear.transpose
+import scientifik.kmath.structures.Matrix
 import scientifik.kmath.structures.NDField
 import kotlin.random.Random
 
@@ -34,12 +37,9 @@ class MathMatrixStructures(val rows: Int, val cols: Int) {
     val multikMatrix2 = Multik.ndarray(src2.map { it.toList() })
     val multikMatrix2T = multikMatrix2.transpose()
 
-    val matrixField = NDField.real(rows, cols)
-    val matrixFieldT = NDField.real(cols, rows)
-    val matrixFieldP = NDField.real(rows, rows)
-    val kmathMatrix1 = matrixField.produce { a -> src1[a[0]][a[1]] }
-    val kmathMatrix2 = matrixField.produce { a -> src2[a[0]][a[1]] }
-    val kmathMatrix2T = matrixFieldT.produce { a -> src2T[a[0]][a[1]] }
+    val kmathMatrix1 = Matrix.real(rows, cols) { r, c -> src1[r][c] }
+    val kmathMatrix2 = Matrix.real(rows, cols) { r, c -> src2[r][c] }
+    val kmathMatrix2T = kmathMatrix2.transpose()
 
     val viktorMatrix1 = src1.toF64Array()
     val viktorMatrix2 = src2.toF64Array()
