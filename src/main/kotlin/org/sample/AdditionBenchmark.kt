@@ -37,6 +37,11 @@ open class AdditionBenchmark {
     }
 
     @Benchmark
+    fun nd4j(bh: Blackhole) {
+        bh.consume(s.nd4jArray1.add(s.nd4jArray2))
+    }
+
+    @Benchmark
     fun loop(bh: Blackhole) {
         val src1 = s.src1
         val src2 = s.src2

@@ -47,6 +47,11 @@ open class MatrixDotBenchmark {
     }
 
     @Benchmark
+    fun nd4j(bh: Blackhole) {
+        bh.consume(s.nd4jMatrix1.mmul(s.nd4jMatrix2T))
+    }
+
+    @Benchmark
     fun loop(bh: Blackhole) {
         val src1 = s.src1
         val src2T = s.src2T

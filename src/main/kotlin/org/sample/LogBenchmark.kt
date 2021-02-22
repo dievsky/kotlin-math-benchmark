@@ -2,6 +2,7 @@ package org.sample
 
 import org.apache.commons.math3.util.FastMath
 import org.jetbrains.kotlinx.multik.api.Multik
+import org.nd4j.linalg.ops.transforms.Transforms
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
 import java.util.concurrent.TimeUnit
@@ -36,6 +37,11 @@ open class LogBenchmark {
     @Benchmark
     fun viktor(bh: Blackhole) {
         bh.consume(s.viktorArray1.log())
+    }
+
+    @Benchmark
+    fun nd4j(bh: Blackhole) {
+        bh.consume(Transforms.log(s.nd4jArray1))
     }
 
     @Benchmark

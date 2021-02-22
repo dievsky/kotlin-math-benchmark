@@ -4,6 +4,7 @@ import org.jetbrains.bio.viktor.asF64Array
 import org.jetbrains.bio.viktor.toF64Array
 import org.jetbrains.kotlinx.multik.api.Multik
 import org.jetbrains.kotlinx.multik.api.ndarray
+import org.nd4j.linalg.factory.Nd4j
 import space.kscience.kmath.linear.Matrix
 import space.kscience.kmath.linear.transpose
 import space.kscience.kmath.nd.RealNDField
@@ -24,6 +25,9 @@ class MathArrayStructures(val arraySize: Int) {
     val viktorArray1 = src1.asF64Array()
     val viktorArray2 = src2.asF64Array()
 
+    val nd4jArray1 = Nd4j.create(src1)
+    val nd4jArray2 = Nd4j.create(src2)
+
 }
 
 class MathMatrixStructures(val rows: Int, val cols: Int) {
@@ -43,6 +47,10 @@ class MathMatrixStructures(val rows: Int, val cols: Int) {
     val viktorMatrix1 = src1.toF64Array()
     val viktorMatrix2 = src2.toF64Array()
     val viktorMatrix2T = src2T.toF64Array()
+
+    val nd4jMatrix1 = Nd4j.create(src1)
+    val nd4jMatrix2 = Nd4j.create(src2)
+    val nd4jMatrix2T = nd4jMatrix2.transpose()
 
 }
 

@@ -32,6 +32,11 @@ open class SumBenchmark {
     }
 
     @Benchmark
+    fun nd4j(bh: Blackhole) {
+        bh.consume(s.nd4jArray1.sumNumber().toDouble())
+    }
+
+    @Benchmark
     fun loop(bh: Blackhole) {
         var res = 0.0
         s.src1.forEach { res += it }
