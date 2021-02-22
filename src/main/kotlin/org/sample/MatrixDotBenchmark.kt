@@ -5,6 +5,7 @@ import org.jetbrains.bio.viktor._I
 import org.jetbrains.kotlinx.multik.api.Multik
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
+import space.kscience.kmath.linear.RealMatrixContext
 import java.util.concurrent.TimeUnit
 
 @Warmup(iterations = 5, time = 10, timeUnit = TimeUnit.SECONDS)
@@ -24,6 +25,13 @@ open class MatrixDotBenchmark {
     @Setup
     fun setup() {
         s = MathMatrixStructures(rows, cols)
+    }
+
+    @Benchmark
+    fun kmath(bh: Blackhole) {
+        with(RealMatrixContext) {
+            bh.consume(s.kmathMatrix1 dot s.kmathMatrix2T)
+        }
     }
 
     @Benchmark

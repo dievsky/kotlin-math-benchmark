@@ -4,10 +4,9 @@ import org.jetbrains.bio.viktor.asF64Array
 import org.jetbrains.bio.viktor.toF64Array
 import org.jetbrains.kotlinx.multik.api.Multik
 import org.jetbrains.kotlinx.multik.api.ndarray
-import scientifik.kmath.linear.real
-import scientifik.kmath.linear.transpose
-import scientifik.kmath.structures.Matrix
-import scientifik.kmath.structures.NDField
+import space.kscience.kmath.linear.Matrix
+import space.kscience.kmath.linear.transpose
+import space.kscience.kmath.nd.RealNDField
 import kotlin.random.Random
 
 class MathArrayStructures(val arraySize: Int) {
@@ -18,7 +17,7 @@ class MathArrayStructures(val arraySize: Int) {
     val multikArray1 = Multik.ndarray(src1)
     val multikArray2 = Multik.ndarray(src2)
 
-    val field = NDField.real(arraySize)
+    val field = RealNDField(intArrayOf(arraySize))
     val kmathArray1 = field.produce { a -> src1[a[0]] }
     val kmathArray2 = field.produce { a -> src2[a[0]] }
 

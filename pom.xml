@@ -10,25 +10,9 @@
 
     <repositories>
         <repository>
-
-            <id>bintray-mipt-npm-scientifik</id>
-            <name>bintray</name>
-            <url>https://dl.bintray.com/mipt-npm/scientifik</url>
-        </repository>
-        <repository>
-            <id>bintray-mipt-npm-dev</id>
-            <name>bintray</name>
-            <url>https://dl.bintray.com/mipt-npm/dev</url>
-        </repository>
-        <repository>
-            <id>bintray-kotlin-kotlin-datascience</id>
-            <name>bintray</name>
-            <url>https://kotlin.bintray.com/kotlin-datascience</url>
-        </repository>
-        <repository>
-            <id>bintray-jetbrains-research-maven</id>
-            <name>bintray</name>
-            <url>https://dl.bintray.com/jetbrains-research/maven</url>
+            <id>space-mipt-npm</id>
+            <name>space</name>
+            <url>https://maven.pkg.jetbrains.space/mipt-npm/p/sci/maven/</url>
         </repository>
     </repositories>
 
@@ -64,14 +48,14 @@
             <version>1.1.0</version>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains.kotlinx.multik</groupId>
+            <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>multik-default</artifactId>
-            <version>0.0.1-dev-13</version>
+            <version>0.0.1</version>
         </dependency>
         <dependency>
-            <groupId>org.jetbrains.kotlinx.multik</groupId>
+            <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>multik-api</artifactId>
-            <version>0.0.1-dev-13</version>
+            <version>0.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -79,9 +63,9 @@
             <version>1.7.25</version>
         </dependency>
         <dependency>
-            <groupId>kscience.kmath</groupId>
+            <groupId>space.kscience</groupId>
             <artifactId>kmath-core-jvm</artifactId>
-            <version>0.1.4</version>
+            <version>0.2.0</version>
         </dependency>
     </dependencies>
 
@@ -97,7 +81,7 @@
             Java source/target to use for compilation.
           -->
         <!--<javac.source>1.8</javac.source>-->
-        <javac.target>1.8</javac.target>
+        <javac.target>11</javac.target>
 
         <!--
            Put an approriate Kotlin compiler and stdlib version here.
@@ -105,7 +89,7 @@
                 http://kotlinlang.org/docs/reference/using-maven.html#plugin-and-versions
          -->
         <kotlin.version>1.4.21</kotlin.version>
-        <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
+        <kotlin.compiler.jvmTarget>11</kotlin.compiler.jvmTarget>
 
         <!--
             Select a JMH benchmark generator to use. Available options:
